@@ -14,7 +14,7 @@ class Phrase {
 */
 addPhraseToDisplay() {
 
-  for (let i = 0; i < this.phrase.length; i++) {
+  for (let i = 0; i < this.phrase; i++) {
     const createLi = document.querySelector('#phrase ul');
         if ((this.phrase[i] >= "A" && this.phrase[i] <= "Z") || (this.phrase[i] >= "a" && this.phrase[i] <= "z")) 
         {
