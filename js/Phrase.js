@@ -14,14 +14,13 @@ class Phrase {
 */
 addPhraseToDisplay() {
 
-  for (let i = 0; i < this.phrase; i++) {
-    const createLi = document.querySelector('#phrase ul');
+  for (let i = 0; i < this.phrase.length; i++) {
         if ((this.phrase[i] >= "A" && this.phrase[i] <= "Z") || (this.phrase[i] >= "a" && this.phrase[i] <= "z")) 
         {
-          createLi.className = `<li class="hide letter ${this.phrase[i]}">${this.phrase[i]}</li>`;
+          createLi.innerHTML += `<li class="hide letter ${this.phrase[i]}">${this.phrase[i]}</li>`;
 
         } else {
-          createLi.className = `<li class="space"></li>`;
+          createLi.innerHTML += `<li class="space"></li>`;
           
         }
   }

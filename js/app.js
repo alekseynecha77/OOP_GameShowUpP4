@@ -5,6 +5,8 @@
 
 // const phrase = new Phrase('Life is like a box of chocolates');
 // console.log(`Phrase - phrase: ${phrase.phrase}`);
+const createLi = document.querySelector('#phrase ul');
+
 const phrase = new Phrase();
 
 const game = new Game();
