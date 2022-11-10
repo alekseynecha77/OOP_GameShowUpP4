@@ -1,19 +1,43 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * app.js */
-
-
-// const phrase = new Phrase('Life is like a box of chocolates');
-// console.log(`Phrase - phrase: ${phrase.phrase}`);
-const createLi = document.querySelector('#phrase ul');
-const hidesGame = document.getElementById('overlay');
-
-// const phrase = new Phrase();
+const createLi = document.querySelector("#phrase ul");
+const hidesGame = document.getElementById("overlay");
+const qwerty = document.getElementById("qwerty");
 
 const game = new Game();
-game.getRandomPhrase().addPhraseToDisplay();
-const randomPhrase = game.getRandomPhrase();
-// phrase.addPhraseToDisplay();
 
-game.startGame();
-console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+const btnClick = document.getElementById("btn__reset");
+
+btnClick.addEventListener("click", () => {
+  game.startGame();
+});
+let missed = 0;
+
+qwerty.addEventListener("click", (e) => {
+  let btn = e.target;
+  if (btn.tagName === "BUTTON") {
+    btn.disabled = true;
+    btn.className = "chosen";
+    let letterFound = checkLetter(btn);
+
+    if (letterFound === null) {
+      const lost = document.querySelectorAll(".tries img")[missed];
+      lost.src = "images/lostHeart.png";
+      missed++;
+    }
+  }
+});
+
+function checkLetter(button) {
+  let match = null;
+  let selectLi = document.querySelectorAll("li");
+  for (let i = 0; i < selectLi.length; i++) {
+    if (button.textContent === selectLi[i].textContent.toLowerCase()) {
+      selectLi[i].classList.add("show");
+      selectLi[i].style.transition = "all 1.5s ease-out ";
+      match = button.textContent;
+    }
+  }
+  return match;
+}
