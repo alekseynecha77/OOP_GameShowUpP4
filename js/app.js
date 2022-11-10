@@ -26,9 +26,36 @@ qwerty.addEventListener("click", (e) => {
       lost.src = "images/lostHeart.png";
       missed++;
     }
+    
   }
+  checkForWin();
 });
 
+function resetGame() {
+  const buttons = document.getElementsByTagName("button");
+  const li = document.querySelectorAll("ul");
+  overlay.className = "start";
+  li.innerHTML = " ";
+  missed = 0;
+
+  /* RESETS THE HEARTS */
+  for (let i = 0; i < tries.length; i++) {
+    tries[i].firstElementChild.src = "images/liveHeart.png";
+  }
+
+  /* RESETS LI */ 
+  for (let i = 0; i < li.length; i++) {
+    li[i].className = "";
+    li[i].textContent = "";
+  }
+
+  /* RESETS THE CHOSEN KEYBOARD KEYS */
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].className = "";
+    buttons[i].disabled = false;
+  }
+
+}
 function checkLetter(button) {
   let match = null;
   let selectLi = document.querySelectorAll("li");
@@ -40,4 +67,24 @@ function checkLetter(button) {
     }
   }
   return match;
+}
+
+function checkForWin(){
+
+  const show = document.getElementsByClassName('show');
+  const letter = document.getElementsByClassName('letter');
+  if(letter.length === show.length){
+    overlay.classList.add('win');
+    overlay.style.display ='flex';
+    overlay.children[0].textContent = 'You won';
+    overlay.children[1].textContent ='restart';
+    resetGame();
+  }else if(missed > 5){
+    overlay.classList.add('lose');
+    overlay.style.display ='flex';
+    overlay.children[0].textContent = 'Failure';
+    overlay.children[1].textContent ='restart';
+    resetGame();
+  }
+
 }
