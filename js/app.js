@@ -79,7 +79,7 @@ function checkForWin(){
     overlay.children[0].textContent = 'You won';
     overlay.children[1].textContent ='restart';
     resetGame();
-  }else if(missed > 5){
+  }else if(missed >= 5){
     overlay.classList.add('lose');
     overlay.style.display ='flex';
     overlay.children[0].textContent = 'Failure';
