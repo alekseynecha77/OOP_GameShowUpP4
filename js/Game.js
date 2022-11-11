@@ -81,8 +81,10 @@ class Game {
       lost.src = "images/lostHeart.png";
       this.missed++;
     }
-    
+
   }
+  checkForWin();
+
 }
 checkForWin(){
 
