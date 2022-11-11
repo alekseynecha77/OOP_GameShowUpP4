@@ -66,7 +66,8 @@ class Game {
       buttons[i].className = "";
       buttons[i].disabled = false;
     }
-  
+  const phrArr = this.getRandomPhrase(this.phrases);
+  this.addPhraseToDisplay(phrArr);
   }
   
   handleInteraction(btn) {
