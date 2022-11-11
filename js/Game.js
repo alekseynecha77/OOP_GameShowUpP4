@@ -67,10 +67,10 @@ class Game {
   
   }
   
-  handleInteraction() {
-    let btn = e.target;
-  if (btn.tagName === "BUTTON") {
+  handleInteraction(btn) {
     btn.disabled = true;
+      if (btn.tagName === "BUTTON") {
+    btn.disabled = false;
     btn.className = "chosen";
     let letterFound = checkLetter(btn);
 
