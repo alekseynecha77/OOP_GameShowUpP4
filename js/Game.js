@@ -3,9 +3,11 @@
  * Game.js */
 const hearts = document.querySelectorAll(".tries img");
 const keys = document.getElementsByClassName('key');
+const startScreenOverlay = document.getElementById('overlay');
 
 class Game {
   constructor(game) {
+    this.missed = 0;
     this.game = game;
     this.phrases = [
       new Phrase("Alex is a pro at coding"),
@@ -15,7 +17,7 @@ class Game {
       new Phrase("another time my phone said"),
     ];
     this.activePhrase = null;
-    this.missed = 0;
+
   }
   /**
    * random phrase from the phrases array
@@ -46,7 +48,6 @@ class Game {
     const li = document.querySelectorAll("ul");
     overlay.className = "start";
     li.innerHTML = " ";
-    missed = 0;
   
     /* RESETS THE HEARTS */
     for (let i = 0; i < tries.length; i++) {
@@ -72,16 +73,16 @@ class Game {
       if (btn.tagName === "BUTTON") {
     btn.disabled = false;
     btn.className = "chosen";
-    let letterFound = checkLetter(btn);
+
+    let letterFound = this.activePhrase.checkLetter(btn);
 
     if (letterFound === null) {
-      const lost = document.querySelectorAll(".tries img")[missed];
+      const lost = document.querySelectorAll(".tries img")[this.missed];
       lost.src = "images/lostHeart.png";
-      missed++;
+      this.missed++;
     }
     
   }
- checkForWin();
 }
 checkForWin(){
 
@@ -93,7 +94,7 @@ checkForWin(){
     overlay.children[0].textContent = 'You won';
     overlay.children[1].textContent ='restart';
     resetGame();
-  }else if(missed >= 5){
+  }else if(this.missed >= 5){
     overlay.classList.add('lose');
     overlay.style.display ='flex';
     overlay.children[0].textContent = 'Failure';
