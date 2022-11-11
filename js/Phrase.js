@@ -38,8 +38,8 @@ checkLetter(button) {
   return match;
 }
 showMatchedLetter(letter) {
-  for (let i = 0; i < phraseUl.children.length; i++) {
-      const char = phraseUl.children[i];
+  for (let i = 0; i < selectLi.children.length; i++) {
+      const char = selectLi.children[i];
       if (char.innerHTML === letter) {
           char.classList.replace('hide', 'show');
       }
