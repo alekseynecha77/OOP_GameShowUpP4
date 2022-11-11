@@ -4,6 +4,7 @@
 const hearts = document.querySelectorAll(".tries img");
 const keys = document.getElementsByClassName('key');
 const startScreenOverlay = document.getElementById('overlay');
+const tries = document.querySelector('.tries');
 
 class Game {
   constructor(game) {
@@ -81,10 +82,8 @@ class Game {
       lost.src = "images/lostHeart.png";
       this.missed++;
     }
-
   }
-  checkForWin();
-
+this.checkForWin();
 }
 checkForWin(){
 
@@ -95,13 +94,13 @@ checkForWin(){
     overlay.style.display ='flex';
     overlay.children[0].textContent = 'You won';
     overlay.children[1].textContent ='restart';
-    resetGame();
+    this.resetGame();
   }else if(this.missed >= 5){
     overlay.classList.add('lose');
     overlay.style.display ='flex';
     overlay.children[0].textContent = 'Failure';
     overlay.children[1].textContent ='restart';
-    resetGame();
+    this.resetGame();
   }
 
 }
