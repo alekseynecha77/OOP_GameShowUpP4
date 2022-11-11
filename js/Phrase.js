@@ -25,6 +25,27 @@ addPhraseToDisplay() {
         }
   }
 }
+checkLetter(button) {
+  let match = null;
+  let selectLi = document.querySelectorAll("li");
+  for (let i = 0; i < selectLi.length; i++) {
+    if (button.textContent === selectLi[i].textContent.toLowerCase()) {
+      selectLi[i].classList.add("show");
+      selectLi[i].style.transition = "all 1.5s ease-out ";
+      match = button.textContent;
+    }
+  }
+  return match;
+}
+showMatchedLetter(letter) {
+  for (let i = 0; i < phraseUl.children.length; i++) {
+      const char = phraseUl.children[i];
+      if (char.innerHTML === letter) {
+          char.classList.replace('hide', 'show');
+      }
+  }
+}
+
 }
 
 
