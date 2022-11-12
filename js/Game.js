@@ -67,36 +67,59 @@ class Game {
       buttons[i].disabled = false;
     }
   const phrArr = this.getRandomPhrase(this.phrases);
-  this.addPhraseToDisplay(phrArr);
+  this.addPhraseToDisplay =phrArr;
   }
-  
+
   handleInteraction(btn) {
     btn.disabled = true;
-      if (btn.tagName === "BUTTON") {
-    btn.disabled = false;
-    btn.className = "chosen";
-
-    let letterFound = this.activePhrase.checkLetter(btn);
-
-    if (letterFound === null) {
-      const lost = document.querySelectorAll(".tries img")[this.missed];
-      lost.src = "images/lostHeart.png";
-      this.missed++;
-    }
+      if (this.activePhrase.checkLetter(btn.innerHTML)) {
+    btn.classList.add("chosen");
+    this.activePhrase.showMatchedLetter(btn.innerHTML);
+    this.checkForWin;
+       } else{
+          btn.classList.add('wrong');
+          this.removeLife();
+       }
+  
   }
-this.checkForWin();
-}
-checkForWin(){
 
-  const show = document.getElementsByClassName('show');
-  const letter = document.getElementsByClassName('letter');
-  if(letter.length === show.length){
+
+removeLife(){
+  hearts[hearts.length - 1 - this.missed].src = "images/lostHeart.png";
+  this.missed++;
+  
+  if(this.missed === 5){
+    this.gameOver('lose');
+
+  }
+}  
+
+checkForWin() {
+  // get all hidden items
+  const hiddenItems = document.getElementsByClassName('hide');
+  // check if the hidden items length is empty
+  if (hiddenItems.length === 0) {
+    return true
+  } else {
+    return false
+  }
+}
+
+/**
+* this is called when the game is either won/lost
+* @param {String} result 
+* displays the startScreenOverlay again with a different msg or style depending on the result
+*/
+
+gameOver(result){
+
+  if(result === 'win'){
     overlay.classList.add('win');
     overlay.style.display ='flex';
     overlay.children[0].textContent = 'You won';
     overlay.children[1].textContent ='restart';
     this.resetGame();
-  }else if(this.missed >= 5){
+  }else{
     overlay.classList.add('lose');
     overlay.style.display ='flex';
     overlay.children[0].textContent = 'Failure';

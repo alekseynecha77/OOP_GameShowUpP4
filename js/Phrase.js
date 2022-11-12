@@ -34,7 +34,7 @@ checkLetter(button) {
       selectLi[i].style.transition = "all 1.5s ease-out ";
       match = button.textContent;
     }
-  }
+  } 
   return match;
 }
 showMatchedLetter(letter) {
