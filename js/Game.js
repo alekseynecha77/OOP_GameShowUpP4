@@ -61,13 +61,13 @@ class Game {
 
 
 removeLife(){
+  this.missed++;
 
-  if(this.missed === 5){
+  if(this.missed >= 5){
     this.gameOver('lose');
 
   }else{
-    hearts[hearts.length - 1 - this.missed].src = "../images/lostHeart.png";
-    this.missed++;
+    hearts[hearts.length - this.missed].src = "../images/lostHeart.png";
     
   }
 }  
