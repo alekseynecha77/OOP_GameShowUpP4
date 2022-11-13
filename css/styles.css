@@ -177,7 +177,7 @@ button {
 }
 
 .title {
-  color: #FFF;
+  color: rgb(219, 32, 32);
 }
 .start {
 
@@ -189,6 +189,11 @@ button {
 
 .win {
   background-color: var(--color-win);
+  background-image: url(../images/Winning.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
 }
 
 .win a {
@@ -197,6 +202,10 @@ button {
 
 .lose {
   background-color: var(--color-win);
+  background-image: url(../images/failure.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .lose a {

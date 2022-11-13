@@ -129,11 +129,9 @@ gameOver(result){
   if(result === 'win'){
     gameOverMessage.innerHTML = 'You won';
     startScreenOverlay.className = 'win';
-    this.resetGame();
   }else if(result === 'lose'){
     gameOverMessage.innerHTML = 'Failure';
     startScreenOverlay.className = 'lose';
-    this.resetGame();
   }
 
 }
