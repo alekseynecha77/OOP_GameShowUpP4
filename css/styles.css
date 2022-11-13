@@ -179,10 +179,10 @@ button {
 .title {
   color: #FFF;
 }
-
 .start {
-  background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif)}
 
+  background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif);
+}
 .start a {
   color: #fff;
 }
@@ -196,8 +196,9 @@ button {
 }
 
 .lose {
-  background-image: var(--color-lose);
+  background-color: var(--color-win);
 }
+
 .lose a {
   color: var(--color-lose);
 }

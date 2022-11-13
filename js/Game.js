@@ -70,7 +70,6 @@ class Game {
   const phrArr = this.getRandomPhrase(this.phrases);
   this.addPhraseToDisplay =phrArr;
   }
-
   handleInteraction(btn) {
     btn.disabled = true;
       if (this.activePhrase.checkLetter(btn.innerHTML) === true) {
