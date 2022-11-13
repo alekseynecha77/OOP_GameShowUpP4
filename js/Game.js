@@ -48,8 +48,8 @@ class Game {
  
 
   handleInteraction(btn) {
-    btn.disabled = true;
       if (this.activePhrase.checkLetter(btn.innerHTML)) {
+    btn.disabled = true;
     btn.classList.add("chosen");
     this.activePhrase.showMatchedLetter(btn.innerHTML);
     this.checkForWin();
@@ -107,4 +107,6 @@ gameOver(result){
   }
 
 }
+
 }
+this.activePhrase = null;
