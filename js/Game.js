@@ -44,6 +44,7 @@ class Game {
     this.activePhrase = this.getRandomPhrase();
     this.activePhrase.addPhraseToDisplay();
   }
+
   resetGame() {
     const buttons = document.getElementsByTagName("button");
     const li = document.querySelectorAll("ul");
@@ -95,13 +96,17 @@ removeLife(){
 }  
 
 checkForWin() {
-  // get all hidden items
-  const hiddenItems = document.getElementsByClassName('hide');
-  // check if the hidden items length is empty
-  if (hiddenItems.length === 0) {
-    return true
-  } else {
-    return false
+  const phraseLetters = document.getElementsByClassName('letter');
+  let lettersShown = 0;
+  for (let i = 0; i < phraseLetters.length; i++) {
+      const e = phraseLetters[i];
+      if (e.classList.contains('show')) {
+          lettersShown++;
+      }
+  }
+  
+  if (lettersShown === phraseLetters.length ) {
+      this.gameOver('win');
   }
 }
 
@@ -112,18 +117,16 @@ checkForWin() {
 */
 
 gameOver(result){
+  const gameOverMessage = document.getElementById('game-over-message');
+  startScreenOverlay.style.display = 'flex';
 
   if(result === 'win'){
-    overlay.classList.add('win');
-    overlay.style.display ='flex';
-    overlay.children[0].textContent = 'You won';
-    overlay.children[1].textContent ='restart';
+    gameOverMessage.innerHTML = 'You won';
+    startScreenOverlay.classList.add('win');
     this.resetGame();
-  }else{
-    overlay.classList.add('lose');
-    overlay.style.display ='flex';
-    overlay.children[0].textContent = 'Failure';
-    overlay.children[1].textContent ='restart';
+  }else if(result === 'lose'){
+    gameOverMessage.innerHTML = 'Failure';
+    startScreenOverlay.classList.add('lose');
     this.resetGame();
   }
 

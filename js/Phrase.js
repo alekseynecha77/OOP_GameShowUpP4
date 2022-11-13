@@ -3,7 +3,6 @@
  * Phrase.js */
 
 
-
 class Phrase {
 
     constructor(phrase) {
@@ -25,27 +24,29 @@ addPhraseToDisplay() {
         }
   }
 }
+
+
 checkLetter(button) {
   let match = null;
-  let selectLi = document.querySelectorAll("li");
+  let selectLi = document.querySelectorAll('li');
   for (let i = 0; i < selectLi.length; i++) {
-    if (button.textContent === selectLi[i].textContent.toLowerCase()) {
-      selectLi[i].classList.add("show");
-      selectLi[i].style.transition = "all 1.5s ease-out ";
-      match = button.textContent;
+    if (button.toLowerCase() === selectLi[i].textContent.toLowerCase()) {
+      selectLi[i].classList.add('show');
+      selectLi[i].style.transition = 'all 1.5s ease-out ';
+      match = button;
     }
-  } 
+  }
   return match;
 }
 showMatchedLetter(letter) {
-  for (let i = 0; i < selectLi.children.length; i++) {
-      const char = selectLi.children[i];
-      if (char.innerHTML === letter) {
-          char.classList.replace('hide', 'show');
-      }
+  let selectLi = document.querySelectorAll('li');
+  for (let i = 0; i < selectLi.length; i++) {
+    const char = selectLi[i];
+    if (char.innerHTML === letter) {
+      char.classList.replace('hide', 'show');
+    }
   }
 }
-
 }
 
 
