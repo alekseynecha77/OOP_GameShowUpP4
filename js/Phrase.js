@@ -26,17 +26,8 @@ addPhraseToDisplay() {
 }
 
 
-checkLetter(button) {
-  let match = null;
-  let selectLi = document.querySelectorAll('li');
-  for (let i = 0; i < selectLi.length; i++) {
-    if (button.toLowerCase() === selectLi[i].textContent.toLowerCase()) {
-      selectLi[i].classList.add('show');
-      selectLi[i].style.transition = 'all 1.5s ease-out ';
-      match = button;
-    }
-  }
-  return match;
+checkLetter(letter) {
+  return this.phrase.includes(letter);
 }
 showMatchedLetter(letter) {
   let selectLi = document.querySelectorAll('li');

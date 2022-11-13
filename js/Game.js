@@ -73,10 +73,17 @@ class Game {
 
   handleInteraction(btn) {
     btn.disabled = true;
-      if (this.activePhrase.checkLetter(btn.innerHTML)) {
+      if (this.activePhrase.checkLetter(btn.innerHTML) === true) {
     btn.classList.add("chosen");
     this.activePhrase.showMatchedLetter(btn.innerHTML);
-    this.checkForWin;
+    if (this.checkForWin()) {
+      // call gameOver method adding win to the class name
+      this.gameOver("win");
+      // reset the values to default
+      this.reset();
+    }
+    // if checkForWin is false
+
        } else{
           btn.classList.add('wrong');
           this.removeLife();
@@ -104,7 +111,7 @@ checkForWin() {
           lettersShown++;
       }
   }
-  
+
   if (lettersShown === phraseLetters.length ) {
       this.gameOver('win');
   }
@@ -122,11 +129,11 @@ gameOver(result){
 
   if(result === 'win'){
     gameOverMessage.innerHTML = 'You won';
-    startScreenOverlay.classList.add('win');
+    startScreenOverlay.className = 'win';
     this.resetGame();
   }else if(result === 'lose'){
     gameOverMessage.innerHTML = 'Failure';
-    startScreenOverlay.classList.add('lose');
+    startScreenOverlay.className = 'lose';
     this.resetGame();
   }
 
