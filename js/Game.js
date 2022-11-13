@@ -53,9 +53,6 @@ class Game {
     btn.classList.add("chosen");
     this.activePhrase.showMatchedLetter(btn.innerHTML);
     this.checkForWin();
-
-    // if checkForWin is false
-
        } else{
           btn.classList.add('wrong');
           this.removeLife();
