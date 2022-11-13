@@ -45,42 +45,15 @@ class Game {
     this.activePhrase.addPhraseToDisplay();
   }
 
-  resetGame() {
-    const buttons = document.getElementsByTagName("button");
-    const li = document.querySelectorAll("ul");
-    overlay.className = "start";
-    li.innerHTML = " ";
-  
-    /* RESETS THE HEARTS */
-    for (let i = 0; i < tries.length; i++) {
-      tries[i].firstElementChild.src = "images/liveHeart.png";
-    }
-  
-    /* RESETS LI */ 
-    for (let i = 0; i < li.length; i++) {
-      li[i].className = "";
-      li[i].textContent = "";
-    }
-  
-    /* RESETS THE CHOSEN KEYBOARD KEYS */
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].className = "";
-      buttons[i].disabled = false;
-    }
-  const phrArr = this.getRandomPhrase(this.phrases);
-  this.addPhraseToDisplay =phrArr;
-  }
+ 
+
   handleInteraction(btn) {
     btn.disabled = true;
-      if (this.activePhrase.checkLetter(btn.innerHTML) === true) {
+      if (this.activePhrase.checkLetter(btn.innerHTML)) {
     btn.classList.add("chosen");
     this.activePhrase.showMatchedLetter(btn.innerHTML);
-    if (this.checkForWin()) {
-      // call gameOver method adding win to the class name
-      this.gameOver("win");
-      // reset the values to default
-      this.reset();
-    }
+    this.checkForWin();
+
     // if checkForWin is false
 
        } else{
