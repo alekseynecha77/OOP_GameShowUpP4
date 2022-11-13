@@ -2,7 +2,8 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * app.js */
-let game;
+let game = new Game();
+
 const createLi = document.querySelector("#phrase ul");
 const hidesGame = document.getElementById("overlay");
 // const qwerty = document.getElementById("qwerty");
@@ -10,13 +11,8 @@ const keyboard = document.getElementById('qwerty');
 const btnClick = document.getElementById("btn__reset");
 
 btnClick.addEventListener("click", () => {
-  if (game) {
-    game.resetGame();
     game.startGame();
-  } else {
-    game = new Game();
-    game.startGame();
-  }
+
 });
 
 keyboard.addEventListener('click', (e) => { 
@@ -26,13 +22,12 @@ keyboard.addEventListener('click', (e) => {
 });
 
 document.addEventListener("keyup", (e) => {
+
   for(let btn of keys){
     if(btn.innerHTML === e.key){
       game.handleInteraction(btn);
     }
   }
 
-  
+
 });
-
-

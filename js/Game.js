@@ -92,7 +92,7 @@ class Game {
 
 
 removeLife(){
-  hearts[hearts.length - 1 - this.missed].src = "images/lostHeart.png";
+  hearts[hearts.length - 1 - this.missed].src = "../images/lostHeart.png";
   this.missed++;
   
   if(this.missed === 5){
