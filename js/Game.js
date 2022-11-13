@@ -17,7 +17,6 @@ class Game {
       new Phrase("in my phone"),
       new Phrase("another time my phone said"),
     ];
-    this.activePhrase = null;
 
   }
   /**
@@ -48,7 +47,7 @@ class Game {
  
 
   handleInteraction(btn) {
-      if (this.activePhrase.checkLetter(btn.innerHTML)) {
+      if (this.activePhrase.checkLetter(btn.innerHTML) === true) {
     btn.disabled = true;
     btn.classList.add("chosen");
     this.activePhrase.showMatchedLetter(btn.innerHTML);
@@ -63,7 +62,7 @@ class Game {
 
 removeLife(){
 
-  if(this.missed >= 5){
+  if(this.missed === 5){
     this.gameOver('lose');
 
   }else{
