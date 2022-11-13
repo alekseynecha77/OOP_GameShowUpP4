@@ -63,7 +63,7 @@ class Game {
 
 removeLife(){
 
-  if(this.missed === 5){
+  if(this.missed >= 5){
     this.gameOver('lose');
 
   }else{
